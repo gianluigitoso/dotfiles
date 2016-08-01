@@ -20,21 +20,21 @@ assign [class="Lxappearance"] floating enable
 # workspace naming
 set $workspace1  Main Desktop (1)
 set $workspace2  Coding (2)
-set $workspace3  Terminals (3)
-set $workspace4  Files (4)
-set $workspace5  Torrent (5)
-set $workspace6 Dekstop 6 (6)
-set $workspace7  Music (7)
+set $workspace3  Files (3)
+set $workspace4  Free Desktop (4)
+set $workspace5  Free Desktop (5)
+set $workspace6  Free Desktop (6)
+set $workspace7  Torrent (7)
 set $workspace8  Movie (8)
-set $workspace9  Spotify (9)
+set $workspace9  Music (9)
 set $workspace10  Processes (10)
 
 # workspace assigning
 workspace "$workspace1" output $monitor22
 workspace "$workspace2" output $monitor17
 workspace "$workspace3" output $monitor17
-workspace "$workspace4" output $monitor17
-workspace "$workspace5" output $monitor17
+#workspace "$workspace4" output $monitorXX
+#workspace "$workspace5" output $monitorXX
 #workspace "$workspace6" output $monitorXX
 workspace "$workspace7" output $monitor17
 workspace "$workspace8" output $monitor22
@@ -44,10 +44,10 @@ workspace "$workspace10" output $monitor22
 # assigned apps
 assign [class="chromium-browser"] $workspace1
 assign [class="Atom"] $workspace2
-assign [class="Thunar"] $workspace4
-assign [class="Dolphin"] $workspace4
-assign [class="Deluge"] $workspace5
-assign [class="Clementine"] $workspace7
+assign [class="Thunar"] $workspace3
+assign [class="Dolphin"] $workspace3
+assign [class="Deluge"] $workspace7
+assign [class="Clementine"] $workspace9
 assign [class="Vlc"] $workspace8
 
 # assigned apps (for no focus on startup)
@@ -65,21 +65,14 @@ set $mod Mod4
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# printscreen
+bindsym Print exec shutter
+
 # kill focused window
 bindsym $mod+x kill
 
-# lock screen
-bindsym $mod+Control+l exec i3lock
-
 # start a terminal
 bindsym $mod+Return exec lxterminal
-
-
-set $bg-color 	     #2f343f
-set $inactive-bg-color  #2f343f
-set $text-color     #f3f4f5
-set $inactive-text-color #676E7D
-set $urgent-bg-color   #E53935
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
@@ -179,6 +172,9 @@ set $text-color     #f3f4f5
 set $inactive-text-color #676E7D
 set $urgent-bg-color   #E53935
 
+# lock screen
+bindsym $mod+Control+l exec i3lock --color "$bg-color"
+
 # window colors
 #            border       background     text         indicator
 client.focused     $bg-color      $bg-color     $text-color     #000000
@@ -219,11 +215,12 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
-
+#set $active-bar-color #2e3C5b
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    status_command i3status
+    tray_output $monitor22
+    status_command i3blocks -c ~/.i3/i3blocks.conf
     colors {
 		    background $bg-color
 	  	  separator #757575
@@ -232,4 +229,5 @@ bar {
     		inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
     		urgent_workspace  $urgent-bg-color  $urgent-bg-color  $text-color
 	}
+  position bottom
 }
