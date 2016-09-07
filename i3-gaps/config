@@ -51,7 +51,7 @@ for_window [class="Pavucontrol"] floating enable
 # Workspace Assigning
 # ------------------------------------------------------------------------------
 
-assign [class="Telegram "] $workspace2
+assign [class="Telegram"] $workspace2
 assign [class="Atom"] $workspace2
 assign [class="Firefox"] $workspace1
 
