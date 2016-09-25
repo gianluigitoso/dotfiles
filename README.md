@@ -1,2 +1,2 @@
 # dotfiles
-[@gianluigitoso] (http://github.com/gianluigitoso) dotfiles configs
+[@gitoso] (http://github.com/gitoso) dotfiles configs
