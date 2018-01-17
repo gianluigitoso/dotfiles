@@ -1,0 +1,3 @@
+# Variables
+i3DIR="/home/$USER/.config/i3"
+polybarDIR="/home/$USER/.config/polybar"
