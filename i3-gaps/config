@@ -4,6 +4,12 @@
 exec --no-startup-id compton -f
 exec_always --no-startup-id $HOME/.config/polybar/launch_polybar.sh
 
+# Configure touchpad
+exec synclient TapButton1=1
+exec synclient VertScrollDelta=-125
+exec synclient HorizScrollDelta=-125
+exec synclient AccelFactor=0.08
+
 # ------------------------------------------------------------------------------
 # Wallpaper Config
 # ------------------------------------------------------------------------------
@@ -67,12 +73,16 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="Thunar"] floating enable
 
 # ------------------------------------------------------------------------------
+# Focus
+# ------------------------------------------------------------------------------
+
+focus_follows_mouse no
+
+# ------------------------------------------------------------------------------
 # Workspace Assigning
 # ------------------------------------------------------------------------------
 
-assign [class="Telegram"] $workspace2
 assign [class="Atom"] $workspace2
-assign [class="Firefox"] $workspace1
 
 # ------------------------------------------------------------------------------
 # Key Bindings
@@ -198,14 +208,15 @@ mode "resize" {
 # Theme
 # ------------------------------------------------------------------------------
 
-font pango: Arial 9
+font pango: Arial 12
 # ------------------------------------------------------------------------------
 # Bar
 # ------------------------------------------------------------------------------
 
 bar {
-        position top
-	      status_command i3status
+        mode invisible
+        position bottom
+	#status_command i3status
         #status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
         #status_command ~/.config/i3blocks/scripts/ram
 }
