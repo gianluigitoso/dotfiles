@@ -15,5 +15,8 @@ cp ../i3-gaps/config $i3DIR/config
 cp ../polybar/config $polybarDIR/config
 cp ../polybar/launch_polybar.sh $polybarDIR/launch_polybar.sh
 
+# Reseting i3
+i3 restart
+
 # End
 echo "DONE"

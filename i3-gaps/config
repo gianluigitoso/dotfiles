@@ -100,6 +100,9 @@ bindsym Print exec scrot ~/Pictures/Screenshots/screenshot_%d-%M-%Y_%H:%M:%S.png
 bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 
+# show hidden bar (if avaiable)
+bindsym $mod+b bar mode toggle
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -213,10 +216,10 @@ font pango: Arial 12
 # Bar
 # ------------------------------------------------------------------------------
 
-bar {
-        mode invisible
-        position bottom
-	#status_command i3status
-        #status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
-        #status_command ~/.config/i3blocks/scripts/ram
-}
+# bar {
+#         mode hide
+#         position bottom
+# 	  #status_command i3status
+#         #status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
+#         #status_command ~/.config/i3blocks/scripts/ram
+# }
