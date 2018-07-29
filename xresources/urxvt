@@ -1,0 +1,66 @@
+! ---- Variables ----
+#define OPACITY 75
+#define FONT Ubuntu Mono
+#define FONT_SIZE 17
+
+! ---- ScrollBar ----
+urxvt.scrollBar: false
+
+! ---- Enables Transparency ----
+urxvt.depth: 32
+
+! ---- Copy / Paste Shortcuts (require perl extension) ----
+urxvt.keysym.Control-Shift-V: perl:clipboard:paste
+urxvt.keysym.Control-Shift-C: perl:clipboard:copy
+urxvt.iso14755: False
+
+
+! ---- Font Config ----
+urxvt.font: xft:FONT:pixelsize=FONT_SIZE,style=regular
+urxvt.boldFont: xft:FONT:pixelsize=FONT_SIZE,style=bold
+urxvt.letterSpace: -1
+
+
+! ---- Font Rendering ----
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hintstyle: hintfull
+Xft.hinting: true
+
+
+! ---- Internal Padding ----
+*.internalBorder: 15
+
+
+! ---- Colors (Generated with base16-builder) ----
+URxvt*background:                     [OPACITY]#272822
+URxvt*foreground:                     #f8f8f2
+URxvt*cursorColor:                    #f8f8f2
+
+URxvt*scrollColor:                    #f8f8f2
+URxvt*highlightColor:                 #49483e
+URxvt*highlightTextColor:             #a59f85
+
+URxvt*color0:                         #272822
+URxvt*color1:                         #f92672
+URxvt*color2:                         #a6e22e
+URxvt*color3:                         #f4bf75
+URxvt*color4:                         #66d9ef
+URxvt*color5:                         #ae81ff
+URxvt*color6:                         #a1efe4
+URxvt*color7:                         #f8f8f2
+URxvt*color8:                         #75715e
+URxvt*color9:                         #f92672
+URxvt*color10:                        #a6e22e
+URxvt*color11:                        #f4bf75
+URxvt*color12:                        #66d9ef
+URxvt*color13:                        #ae81ff
+URxvt*color14:                        #a1efe4
+URxvt*color15:                        #f9f8f5
+
+URxvt*color16:                        #fd971f
+URxvt*color17:                        #cc6633
+URxvt*color18:                        #383830
+URxvt*color19:                        #49483e
+URxvt*color20:                        #a59f85
+URxvt*color21:                        #f5f4f1
