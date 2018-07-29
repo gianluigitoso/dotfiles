@@ -9,11 +9,18 @@ urxvt.scrollBar: false
 ! ---- Enables Transparency ----
 urxvt.depth: 32
 
+
 ! ---- Copy / Paste Shortcuts (require perl extension) ----
 urxvt.keysym.Control-Shift-V: perl:clipboard:paste
 urxvt.keysym.Control-Shift-C: perl:clipboard:copy
 urxvt.iso14755: False
 
+! ---- Perl Extensions ----
+urxvt.perl-ext-common: default,clipboard,url-select
+
+! ---- Configure url-select ----
+urxvt.url-select.launcher: xdg-open
+urxvt.url-select.underline: true
 
 ! ---- Font Config ----
 urxvt.font: xft:FONT:pixelsize=FONT_SIZE,style=regular
