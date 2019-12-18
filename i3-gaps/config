@@ -1,12 +1,12 @@
 # ------------------------------------------------------------------------------
 # Startup Commands
 # ------------------------------------------------------------------------------
-exec_always --no-startup-id compton -f --config /home/$USER/.config/compton.conf
-exec --no-startup-id ksuperkey
-exec nm-applet
-exec blueman-applet
-exec cbatticon
-exec udiskie
+exec_always --no-startup-id compton -f --config /home/$USER/.config/compton.conf # Compositor
+exec udiskie # Automount
+exec –no-startup-id keyboard-layout.sh # Keyboard layour changer (custom script)
+exec nm-applet # Applet: Network Manager
+exec blueman-applet # Applet: Bluetooth Manager
+exec cbatticon # Applet: Battery indicator
 
 # ------------------------------------------------------------------------------
 # Gaps Config
@@ -20,7 +20,7 @@ gaps outer 1
 # Wallpaper Config
 # ------------------------------------------------------------------------------
 #exec --no-startup-id source ~/.fehbg
-# Actually wallpaper is now managed by betterlockscreen
+exec --no-startup-id betterlockscreen -w
 
 # ------------------------------------------------------------------------------
 # Variables
