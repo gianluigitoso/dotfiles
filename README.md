@@ -8,9 +8,3 @@ Compositor: compton
 Launcher: rofi
 Wallpaper Manager: feh
 Bar: polybar
-
-### Themes
-GTK Theme: Arc-Darker
-Icons: Numix
-
-### Font Listing
