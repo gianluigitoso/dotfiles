@@ -5,7 +5,8 @@ exec_always --no-startup-id compton -f --config /home/$USER/.config/compton.conf
 exec --no-startup-id ksuperkey
 exec nm-applet
 exec blueman-applet
-
+exec cbatticon
+exec udiskie
 
 # ------------------------------------------------------------------------------
 # Gaps Config
@@ -19,6 +20,7 @@ gaps outer 1
 # Wallpaper Config
 # ------------------------------------------------------------------------------
 #exec --no-startup-id source ~/.fehbg
+# Actually wallpaper is now managed by betterlockscreen
 
 # ------------------------------------------------------------------------------
 # Variables
