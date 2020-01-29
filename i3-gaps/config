@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 exec_always --no-startup-id compton -f --config /home/$USER/.config/compton.conf # Compositor
 exec udiskie # Automount
-exec –no-startup-id keyboard-layout.sh # Keyboard layour changer (custom script)
+exec keyboard-layout.sh # Keyboard layour changer (custom script)
 exec nm-applet # Applet: Network Manager
 exec blueman-applet # Applet: Bluetooth Manager
 exec cbatticon # Applet: Battery indicator
@@ -45,6 +45,10 @@ set $terminal konsole
 # Floating Windows
 # ------------------------------------------------------------------------------
 for_window [class="stacer"] floating enable
+for_window [class="pavucontrol"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="blueman-manager"] floating enable
+for_window [class="Blueman-manager"] floating enable
 
 # ------------------------------------------------------------------------------
 # Theme
@@ -56,6 +60,9 @@ font pango:monospace 8
 # ------------------------------------------------------------------------------
 bindsym $mod+x kill
 bindsym $mod+Control+l exec betterlockscreen -l dim
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+
 
 # ------------------------------------------------------------------------------
 # Bar
@@ -63,6 +70,9 @@ bindsym $mod+Control+l exec betterlockscreen -l dim
 bar {
 	position top
         status_command i3status
+        tray_padding 2
+        separator_symbol " | "
+        font pango:DejaVu Sans Mono 9
 }
 
 
@@ -78,10 +88,7 @@ bindsym $mod+Return exec $terminal
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+j focus left
