@@ -4,7 +4,6 @@
 exec_always --no-startup-id compton -f --config /home/$USER/.config/compton.conf # Compositor
 exec setxkbmap -layout "br"
 exec udiskie # Automount
-exec keyboard-layout.sh # Keyboard layour changer (custom script)
 exec nm-applet # Applet: Network Manager
 exec blueman-applet # Applet: Bluetooth Manager
 exec insync # Applet: Sync with Google Drive (started by daemon)
