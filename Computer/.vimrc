@@ -11,6 +11,9 @@ set hidden
 "turn on syntax highlighting
 syntax on
 
+"prerequisite for vimwiki
+set nocompatible
+
 " ================ Persistent Undo ==================
 
 " Keep undo history across sessions, by storing in file.

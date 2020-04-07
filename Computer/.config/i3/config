@@ -2,12 +2,17 @@
 # Startup Commands
 # ------------------------------------------------------------------------------
 exec_always --no-startup-id compton -f --config /home/$USER/.config/compton.conf # Compositor
-exec setxkbmap -layout "br"
-exec udiskie # Automount
-exec nm-applet # Applet: Network Manager
-exec blueman-applet # Applet: Bluetooth Manager
-exec insync # Applet: Sync with Google Drive (started by daemon)
-exec pasystray # Applet: Pulseaudio control
+
+exec setxkbmap -layout "br"         # Keyboard layout
+exec udiskie                        # Automount drives
+
+exec nm-applet                      # Applet: Network Manager
+exec blueman-applet                 # Applet: Bluetooth Manager
+exec insync                         # Applet: Sync with Google Drive (started by daemon)
+exec pasystray                      # Applet: Pulseaudio control
+
+exec flameshot                      # App: Screenshot Manager
+exec clipit                         # App: Clipboar Manager
 
 
 # ------------------------------------------------------------------------------
@@ -49,16 +54,16 @@ exec --no-startup-id betterlockscreen -w
 # Variables
 # ------------------------------------------------------------------------------
 set $mod Mod4
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 "1: www"
+set $ws2 "2: code"
+set $ws3 "3: terminal"
+set $ws4 "4: files"
+set $ws5 "5: mail"
+set $ws6 "6: "
+set $ws7 "7: F1: chat"
+set $ws8 "8: F2: vms"
+set $ws9 "9: F3: "
+set $ws10 "10: F4: "
 set $refresh_i3status killall -SIGUSR1 i3status
 #set $terminal konsole
 #set $terminal i3_sensible_terminal
@@ -166,10 +171,10 @@ bindsym $mod+3 workspace number $ws3
 bindsym $mod+4 workspace number $ws4
 bindsym $mod+5 workspace number $ws5
 bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+bindsym $mod+F1 workspace number $ws7
+bindsym $mod+F2 workspace number $ws8
+bindsym $mod+F3 workspace number $ws9
+bindsym $mod+F4 workspace number $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -178,12 +183,12 @@ bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
 bindsym $mod+Shift+5 move container to workspace number $ws5
 bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+F1 move container to workspace number $ws7
+bindsym $mod+Shift+F2 move container to workspace number $ws8
+bindsym $mod+Shift+F3 move container to workspace number $ws9
+bindsym $mod+Shift+F4 move container to workspace number $ws10
 
-# reload the configuration file
+
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
@@ -198,10 +203,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
