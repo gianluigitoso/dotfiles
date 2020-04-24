@@ -17,6 +17,34 @@ exec clipit                         # App: Clipboar Manager
 
 exec xss-lock -- betterlockscreen -l dimblur -t "You shall not pass..."
 
+set $TERMINAL termite
+# ------------------------------------------------------------------------------
+# Scratchpad
+# ------------------------------------------------------------------------------
+for_window [instance="zeal"] floating enable
+for_window [instance="zeal"] resize set 1200 768
+for_window [instance="zeal"] move scratchpad
+for_window [instance="zeal"] border pixel 3
+for_window [instance="zeal"] sticky enable
+exec --no-startup-id zeal
+bindsym $mod+y [instance="zeal"] scratchpad show; [instance="zeal"] move position center;
+
+for_window [instance="gnome-pomodoro"] floating enable
+for_window [instance="gnome-pomodoro"] resize set 1200 768
+for_window [instance="gnome-pomodoro"] move scratchpad
+for_window [instance="gnome-pomodoro"] border pixel 3
+for_window [instance="gnome-pomodoro"] sticky enable
+exec --no-startup-id gnome-pomodoro
+bindsym $mod+p [instance="gnome-pomodoro"] scratchpad show; [instance="gnome-pomodoro"] move position center;
+
+for_window [instance="qalculate-gtk"] floating enable
+for_window [instance="qalculate-gtk"] resize set 1200 768
+for_window [instance="qalculate-gtk"] move scratchpad
+for_window [instance="qalculate-gtk"] border pixel 3
+for_window [instance="qalculate-gtk"] sticky enable
+exec --no-startup-id qalculate-gtk
+bindsym $mod+c [instance="qalculate-gtk"] scratchpad show; [instance="qalculate-gtk"] move position center;
+
 # ------------------------------------------------------------------------------
 # Custom Keys
 # ------------------------------------------------------------------------------
@@ -56,20 +84,18 @@ exec --no-startup-id betterlockscreen -w
 # Variables
 # ------------------------------------------------------------------------------
 set $mod Mod4
-set $ws1 "1: www"
-set $ws2 "2: code"
-set $ws3 "3: terminal"
-set $ws4 "4: files"
-set $ws5 "5: mail"
-set $ws6 "6: "
-set $ws7 "7: F1: chat"
-set $ws8 "8: F2: vms"
-set $ws9 "9: F3: games"
-set $ws10 "10: F4: music"
+set $ws1 "1:1 "
+set $ws2 "2:2 "
+set $ws3 "3:3 "
+set $ws4 "4:4 "
+set $ws5 "5:5 "
+set $ws6 "6:6 "
+set $ws7 "7:F1 "
+set $ws8 "8:F2 "
+set $ws9 "9:F3 "
+set $ws10 "10:F4 "
 set $refresh_i3status killall -SIGUSR1 i3status
-#set $terminal i3_sensible_terminal
-set $terminal termite
-
+set $terminal i3-sensible-terminal
 
 # ------------------------------------------------------------------------------
 # Floating Windows
@@ -88,23 +114,19 @@ for_window [class="Thunar"] floating enable
 # ------------------------------------------------------------------------------
 # Workspace App Assignment
 # ------------------------------------------------------------------------------
-# 1: www
 assign [class="firefox"] $ws1
 assign [class="Firefox"] $ws1
 
-# 2: code
 assign [class="code"] $ws2
 assign [class="Code"] $ws2
 
-# 3: terminal
+assign [class="Mail"] $ws4
+assign [class="Thunderbird"] $ws4
 
-# 4: files
+#assign [title="gotop"] $ws6
+#assign [title="Gotop"] $ws6
 
-# 5: mail
-assign [class="Mail"] $ws5
-assign [class="Thunderbird"] $ws5
 
-# F1: chat
 assign [class="discord"] $ws7
 assign [class="Discord"] $ws7
 assign [class="hexchat"] $ws7
@@ -115,16 +137,12 @@ assign [class="whatsapp-nativefier-d40211"] $ws7
 assign [class="slack"] $ws7
 assign [class="Slack"] $ws7
 
-
-# F2: vms
 assign [class="virtualbox"] $ws8
 assign [class="Virtualbox"] $ws8
 
-# F3: games
 assign [class="steam"] $ws9
 assign [class="Steam"] $ws9
 
-# F4: music
 assign [class="spotify"] $ws10
 assign [class="Spotify"] $ws10
 assign [title="Spotify Premium"] $ws10
@@ -138,11 +156,15 @@ font pango:monospace 8
 # Bar
 # ------------------------------------------------------------------------------
 bar {
+	strip_workspace_numbers yes
 	position top
         status_command i3status
         tray_padding 2
         separator_symbol " | "
         font pango: FiraSans 9
+	colors {
+		#background #2F343F
+	}
 }
 
 
