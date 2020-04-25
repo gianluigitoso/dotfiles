@@ -15,7 +15,15 @@ exec pasystray                      # Applet: Pulseaudio control
 exec flameshot                      # App: Screenshot Manager
 exec clipit                         # App: Clipboar Manager
 
-exec xss-lock -- betterlockscreen -l dimblur -t "You shall not pass..."
+exec xss-lock -- betterlockscreen -l dimblur -t "You shall not pass..." # App: Screenlock
+exec --no-startup-id termite --name gotop -e gotop                      # App: gotop (System Monitor)
+
+# Scratchpad startups
+exec --no-startup-id termite --name scratch-ranger -e ranger
+exec --no-startup-id termite --name scratch-terminal 
+exec --no-startup-id zeal
+exec --no-startup-id gnome-pomodoro
+exec --no-startup-id qalculate-gtk
 
 set $TERMINAL termite
 # ------------------------------------------------------------------------------
@@ -26,7 +34,6 @@ for_window [instance="zeal"] resize set 1200 768
 for_window [instance="zeal"] move scratchpad
 for_window [instance="zeal"] border pixel 3
 for_window [instance="zeal"] sticky enable
-exec --no-startup-id zeal
 bindsym $mod+y [instance="zeal"] scratchpad show; [instance="zeal"] move position center;
 
 for_window [instance="gnome-pomodoro"] floating enable
@@ -34,7 +41,6 @@ for_window [instance="gnome-pomodoro"] resize set 1200 768
 for_window [instance="gnome-pomodoro"] move scratchpad
 for_window [instance="gnome-pomodoro"] border pixel 3
 for_window [instance="gnome-pomodoro"] sticky enable
-exec --no-startup-id gnome-pomodoro
 bindsym $mod+p [instance="gnome-pomodoro"] scratchpad show; [instance="gnome-pomodoro"] move position center;
 
 for_window [instance="qalculate-gtk"] floating enable
@@ -42,8 +48,23 @@ for_window [instance="qalculate-gtk"] resize set 1200 768
 for_window [instance="qalculate-gtk"] move scratchpad
 for_window [instance="qalculate-gtk"] border pixel 3
 for_window [instance="qalculate-gtk"] sticky enable
-exec --no-startup-id qalculate-gtk
 bindsym $mod+c [instance="qalculate-gtk"] scratchpad show; [instance="qalculate-gtk"] move position center;
+
+for_window [instance="scratch-ranger"] floating enable
+for_window [instance="scratch-ranger"] resize set 1200 768
+for_window [instance="scratch-ranger"] move scratchpad
+for_window [instance="scratch-ranger"] border pixel 3
+for_window [instance="scratch-ranger"] sticky enable
+bindsym $mod+q [instance="scratch-ranger"] scratchpad show; [instance="scratch-ranger"] move position center;
+bindsym $mod+Shift+q exec --no-startup-id termite --name scratch-ranger -e ranger
+
+for_window [instance="scratch-terminal"] floating enable
+for_window [instance="scratch-terminal"] resize set 1200 768
+for_window [instance="scratch-terminal"] move scratchpad
+for_window [instance="scratch-terminal"] border pixel 3
+for_window [instance="scratch-terminal"] sticky enable
+bindsym $mod+apostrophe [instance="scratch-terminal"] scratchpad show; [instance="scratch-terminal"] move position center;
+bindsym $mod+Shift+apostrophe exec --no-startup-id termite --name scratch-terminal
 
 # ------------------------------------------------------------------------------
 # Custom Keys
@@ -123,8 +144,8 @@ assign [class="Code"] $ws2
 assign [class="Mail"] $ws4
 assign [class="Thunderbird"] $ws4
 
-#assign [title="gotop"] $ws6
-#assign [title="Gotop"] $ws6
+assign [title="gotop"] $ws6
+assign [title="Gotop"] $ws6
 
 
 assign [class="discord"] $ws7
@@ -151,6 +172,10 @@ assign [title="Spotify Premium"] $ws10
 # ------------------------------------------------------------------------------
 font pango:monospace 8
 
+# ------------------------------------------------------------------------------
+# Behavior
+# ------------------------------------------------------------------------------
+workspace_auto_back_and_forth yes
 
 # ------------------------------------------------------------------------------
 # Bar
