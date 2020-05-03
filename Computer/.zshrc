@@ -3,6 +3,7 @@
 export PATH=$HOME/.gem/ruby/2.7.0/bin:$PATH
 export PATH=$HOME/Apps/Scripts:$PATH
 source /etc/profile.d/vte.sh
+export RADV_PERFTEST=aco
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh

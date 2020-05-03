@@ -11,6 +11,7 @@ exec nm-applet                      # Applet: Network Manager
 exec blueman-applet                 # Applet: Bluetooth Manager
 exec insync                         # Applet: Sync with Google Drive (started by daemon)
 exec pasystray                      # Applet: Pulseaudio control
+exec pulseeffectstray               # Applet: Pulseaudio Equalizer + Presets
 
 exec flameshot                      # App: Screenshot Manager
 exec clipit                         # App: Clipboar Manager
@@ -131,6 +132,9 @@ for_window [class="Anki"] floating enable
 for_window [title="Encryptr"] floating enable
 for_window [class="thunar"] floating enable
 for_window [class="Thunar"] floating enable
+for_window [class="pulseeffects"] floating enable
+for_window [class="Pulseeffects"] floating enable
+
 
 # ------------------------------------------------------------------------------
 # Workspace App Assignment
