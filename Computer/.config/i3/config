@@ -11,7 +11,7 @@ exec nm-applet                      # Applet: Network Manager
 exec blueman-applet                 # Applet: Bluetooth Manager
 exec insync                         # Applet: Sync with Google Drive (started by daemon)
 exec pasystray                      # Applet: Pulseaudio control
-exec pulseeffectstray               # Applet: Pulseaudio Equalizer + Presets
+#exec pulseeffectstray               # Applet: Pulseaudio Equalizer + Presets
 
 exec flameshot                      # App: Screenshot Manager
 exec clipit                         # App: Clipboar Manager
@@ -180,6 +180,7 @@ font pango:monospace 8
 # Behavior
 # ------------------------------------------------------------------------------
 workspace_auto_back_and_forth yes
+focus_follows_mouse yes
 
 # ------------------------------------------------------------------------------
 # Bar
