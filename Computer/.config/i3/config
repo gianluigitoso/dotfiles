@@ -1,79 +1,18 @@
 # ------------------------------------------------------------------------------
 # Startup Commands
 # ------------------------------------------------------------------------------
-#exec_always --no-startup-id compton -f --config /home/$USER/.config/compton.conf # Compositor
 exec_always --no-startup-id compton
 
-exec setxkbmap -layout "br"         # Keyboard layout
-exec udiskie                        # Automount drives
+exec udiskie
+exec nm-applet
+exec blueman-applet
+exec pasystray
+exec xss-lock -- betterlockscreen -l dimblur -t "You shall not pass..."
+#exec insync
+#exec flameshot
+#exec clipit
 
-exec nm-applet                      # Applet: Network Manager
-exec blueman-applet                 # Applet: Bluetooth Manager
-exec insync                         # Applet: Sync with Google Drive (started by daemon)
-exec pasystray                      # Applet: Pulseaudio control
-#exec pulseeffectstray               # Applet: Pulseaudio Equalizer + Presets
-
-exec flameshot                      # App: Screenshot Manager
-exec clipit                         # App: Clipboar Manager
-
-exec xss-lock -- betterlockscreen -l dimblur -t "You shall not pass..." # App: Screenlock
-#exec --no-startup-id termite --name gotop -e gotop                      # App: gotop (System Monitor)
-
-# Scratchpad startups
-exec --no-startup-id termite --name scratch-ranger -e ranger
-exec --no-startup-id termite --name scratch-terminal 
-exec_always --no-startup-id feh -z $HOME/.cheatsheets/miniman.png --class scratch-cheatsheet
-exec --no-startup-id zeal
-exec --no-startup-id gnome-pomodoro
-exec --no-startup-id qalculate-gtk
-
-set $TERMINAL termite
-# ------------------------------------------------------------------------------
-# Scratchpad
-# ------------------------------------------------------------------------------
-for_window [instance="zeal"] floating enable
-for_window [instance="zeal"] resize set 1200 768
-for_window [instance="zeal"] move scratchpad
-for_window [instance="zeal"] border pixel 3
-for_window [instance="zeal"] sticky enable
-bindsym $mod+y [instance="zeal"] scratchpad show; [instance="zeal"] move position center;
-
-for_window [instance="gnome-pomodoro"] floating enable
-for_window [instance="gnome-pomodoro"] resize set 1200 768
-for_window [instance="gnome-pomodoro"] move scratchpad
-for_window [instance="gnome-pomodoro"] border pixel 3
-for_window [instance="gnome-pomodoro"] sticky enable
-bindsym $mod+p [instance="gnome-pomodoro"] scratchpad show; [instance="gnome-pomodoro"] move position center;
-
-for_window [instance="qalculate-gtk"] floating enable
-for_window [instance="qalculate-gtk"] resize set 1200 768
-for_window [instance="qalculate-gtk"] move scratchpad
-for_window [instance="qalculate-gtk"] border pixel 3
-for_window [instance="qalculate-gtk"] sticky enable
-bindsym $mod+c [instance="qalculate-gtk"] scratchpad show; [instance="qalculate-gtk"] move position center;
-
-for_window [instance="scratch-ranger"] floating enable
-for_window [instance="scratch-ranger"] resize set 1200 768
-for_window [instance="scratch-ranger"] move scratchpad
-for_window [instance="scratch-ranger"] border pixel 3
-for_window [instance="scratch-ranger"] sticky enable
-bindsym $mod+q [instance="scratch-ranger"] scratchpad show; [instance="scratch-ranger"] move position center;
-bindsym $mod+Shift+q exec --no-startup-id termite --name scratch-ranger -e ranger
-
-for_window [instance="scratch-terminal"] floating enable
-for_window [instance="scratch-terminal"] resize set 1200 768
-for_window [instance="scratch-terminal"] move scratchpad
-for_window [instance="scratch-terminal"] border pixel 3
-for_window [instance="scratch-terminal"] sticky enable
-bindsym $mod+apostrophe [instance="scratch-terminal"] scratchpad show; [instance="scratch-terminal"] move position center;
-bindsym $mod+Shift+apostrophe exec --no-startup-id termite --name scratch-terminal
-
-for_window [class="scratch-cheatsheet"] floating enable
-for_window [class="scratch-cheatsheet"] resize set 1200 768
-for_window [class="scratch-cheatsheet"] move scratchpad
-for_window [class="scratch-cheatsheet"] border pixel 3
-for_window [class="scratch-cheatsheet"] sticky enable
-bindsym $mod+m [class="scratch-cheatsheet"] scratchpad show; [class="scratch-cheatsheet"] move position center;
+set $TERMINAL alacritty
 
 # ------------------------------------------------------------------------------
 # Custom Keys
@@ -89,10 +28,6 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% # rai
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% # lower volume
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle # toggle mute for default device
 
-# Brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
-
 # Actions
 bindsym $mod+x kill
 bindsym $mod+Control+l exec betterlockscreen -l dimblur -t "You shall not pass..."
@@ -106,7 +41,7 @@ bindsym Print exec "scrot ~/Pictures/screenshots/scrot-%Y-%m-%d%H:%M:%S.png"
 new_window 1pixel
 gaps inner 7
 gaps outer 1
-#smart_gaps on
+smart_gaps on
 
 # ------------------------------------------------------------------------------
 # Wallpaper Config
@@ -133,18 +68,11 @@ set $terminal i3-sensible-terminal
 # ------------------------------------------------------------------------------
 # Floating Windows
 # ------------------------------------------------------------------------------
-for_window [class="stacer"] floating enable
 for_window [class="pavucontrol"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="blueman-manager"] floating enable
 for_window [class="Blueman-manager"] floating enable
-for_window [class="anki"] floating enable
-for_window [class="Anki"] floating enable
 for_window [title="Encryptr"] floating enable
-#for_window [class="thunar"] floating enable
-#for_window [class="Thunar"] floating enable
-for_window [class="pulseeffects"] floating enable
-for_window [class="Pulseeffects"] floating enable
 
 
 # ------------------------------------------------------------------------------
@@ -182,6 +110,7 @@ for_window [class="Pulseeffects"] floating enable
 #assign [class="spotify"] $ws10
 #assign [class="Spotify"] $ws10
 #assign [title="Spotify Premium"] $ws10
+
 # ------------------------------------------------------------------------------
 # Theme
 # ------------------------------------------------------------------------------
