@@ -35,6 +35,10 @@ fi
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
 
+# Set vim as default editor
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 # Enable numlock
 numlockx &
 

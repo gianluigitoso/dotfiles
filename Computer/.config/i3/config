@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------
 # Startup Commands
 # ------------------------------------------------------------------------------
-exec_always --no-startup-id compton -c "$HOME/.config/compton/compton.conf"
+exec_always --no-startup-id compton --config "$HOME/.config/compton/compton.conf"
 
 exec udiskie
 exec nm-applet
@@ -130,7 +130,11 @@ font pango:monospace 8
 # Behavior
 # ------------------------------------------------------------------------------
 #workspace_auto_back_and_forth yes
-focus_follows_mouse no
+focus_follows_mouse yes
+
+default_border pixel 4
+default_floating_border pixel 4
+hide_edge_borders smart
 
 # ------------------------------------------------------------------------------
 # Bar
@@ -138,12 +142,14 @@ focus_follows_mouse no
 bar {
 	strip_workspace_numbers yes
 	position top
-        status_command i3status
+        #status_command i3status
+        status_command exec $HOME/.config/tazeg-bar/mybar.sh
         tray_padding 2
         separator_symbol " | "
-        font pango: FiraSans 9
+        font pango: Hack 9
 	colors {
 		#background #2F343F
+		active_workspace #333333 #5f676a #ffffff
 	}
 }
 
