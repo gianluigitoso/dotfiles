@@ -17,11 +17,12 @@ exec flameshot                      # App: Screenshot Manager
 exec clipit                         # App: Clipboar Manager
 
 exec xss-lock -- betterlockscreen -l dimblur -t "You shall not pass..." # App: Screenlock
-exec --no-startup-id termite --name gotop -e gotop                      # App: gotop (System Monitor)
+#exec --no-startup-id termite --name gotop -e gotop                      # App: gotop (System Monitor)
 
 # Scratchpad startups
 exec --no-startup-id termite --name scratch-ranger -e ranger
 exec --no-startup-id termite --name scratch-terminal 
+exec_always --no-startup-id feh -z $HOME/.cheatsheets/miniman.png --class scratch-cheatsheet
 exec --no-startup-id zeal
 exec --no-startup-id gnome-pomodoro
 exec --no-startup-id qalculate-gtk
@@ -67,6 +68,13 @@ for_window [instance="scratch-terminal"] sticky enable
 bindsym $mod+apostrophe [instance="scratch-terminal"] scratchpad show; [instance="scratch-terminal"] move position center;
 bindsym $mod+Shift+apostrophe exec --no-startup-id termite --name scratch-terminal
 
+for_window [class="scratch-cheatsheet"] floating enable
+for_window [class="scratch-cheatsheet"] resize set 1200 768
+for_window [class="scratch-cheatsheet"] move scratchpad
+for_window [class="scratch-cheatsheet"] border pixel 3
+for_window [class="scratch-cheatsheet"] sticky enable
+bindsym $mod+m [class="scratch-cheatsheet"] scratchpad show; [class="scratch-cheatsheet"] move position center;
+
 # ------------------------------------------------------------------------------
 # Custom Keys
 # ------------------------------------------------------------------------------
@@ -88,6 +96,9 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightne
 # Actions
 bindsym $mod+x kill
 bindsym $mod+Control+l exec betterlockscreen -l dimblur -t "You shall not pass..."
+
+# Screenshots
+bindsym Print exec "scrot ~/Pictures/screenshots/scrot-%Y-%m-%d%H:%M:%S.png"
 
 # ------------------------------------------------------------------------------
 # Gaps Config
@@ -130,8 +141,8 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="anki"] floating enable
 for_window [class="Anki"] floating enable
 for_window [title="Encryptr"] floating enable
-for_window [class="thunar"] floating enable
-for_window [class="Thunar"] floating enable
+#for_window [class="thunar"] floating enable
+#for_window [class="Thunar"] floating enable
 for_window [class="pulseeffects"] floating enable
 for_window [class="Pulseeffects"] floating enable
 
@@ -139,38 +150,38 @@ for_window [class="Pulseeffects"] floating enable
 # ------------------------------------------------------------------------------
 # Workspace App Assignment
 # ------------------------------------------------------------------------------
-assign [class="firefox"] $ws1
-assign [class="Firefox"] $ws1
+#assign [class="firefox"] $ws1
+#assign [class="Firefox"] $ws1
 
-assign [class="code"] $ws2
-assign [class="Code"] $ws2
+#assign [class="code"] $ws2
+#assign [class="Code"] $ws2
 
-assign [class="Mail"] $ws4
-assign [class="Thunderbird"] $ws4
+#assign [class="Mail"] $ws4
+#assign [class="Thunderbird"] $ws4
 
-assign [title="gotop"] $ws6
-assign [title="Gotop"] $ws6
+#assign [title="gotop"] $ws6
+#assign [title="Gotop"] $ws6
 
 
-assign [class="discord"] $ws7
-assign [class="Discord"] $ws7
-assign [class="hexchat"] $ws7
-assign [class="Hexchat"] $ws7
-assign [class="telegram-desktop"] $ws7
-assign [class="TelegramDesktop"] $ws7
-assign [class="whatsapp-nativefier-d40211"] $ws7
-assign [class="slack"] $ws7
-assign [class="Slack"] $ws7
+#assign [class="discord"] $ws7
+#assign [class="Discord"] $ws7
+#assign [class="hexchat"] $ws7
+#assign [class="Hexchat"] $ws7
+#assign [class="telegram-desktop"] $ws7
+#assign [class="TelegramDesktop"] $ws7
+#assign [class="whatsapp-nativefier-d40211"] $ws7
+#assign [class="slack"] $ws7
+#assign [class="Slack"] $ws7
 
-assign [class="virtualbox"] $ws8
-assign [class="Virtualbox"] $ws8
+#assign [class="virtualbox"] $ws8
+#assign [class="Virtualbox"] $ws8
 
-assign [class="steam"] $ws9
-assign [class="Steam"] $ws9
+#assign [class="steam"] $ws9
+#assign [class="Steam"] $ws9
 
-assign [class="spotify"] $ws10
-assign [class="Spotify"] $ws10
-assign [title="Spotify Premium"] $ws10
+#assign [class="spotify"] $ws10
+#assign [class="Spotify"] $ws10
+#assign [title="Spotify Premium"] $ws10
 # ------------------------------------------------------------------------------
 # Theme
 # ------------------------------------------------------------------------------
