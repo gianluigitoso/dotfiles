@@ -1,7 +1,7 @@
 # ------------------------------------------------------------------------------
 # Startup Commands
 # ------------------------------------------------------------------------------
-exec_always --no-startup-id compton
+exec_always --no-startup-id compton -c "$HOME/.config/compton/compton.conf"
 
 exec udiskie
 exec nm-applet
@@ -76,6 +76,16 @@ for_window [title="Encryptr"] floating enable
 
 
 # ------------------------------------------------------------------------------
+# Scratchpad config
+# ------------------------------------------------------------------------------
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+# ------------------------------------------------------------------------------
 # Workspace App Assignment
 # ------------------------------------------------------------------------------
 #assign [class="firefox"] $ws1
@@ -119,8 +129,8 @@ font pango:monospace 8
 # ------------------------------------------------------------------------------
 # Behavior
 # ------------------------------------------------------------------------------
-workspace_auto_back_and_forth yes
-focus_follows_mouse yes
+#workspace_auto_back_and_forth yes
+focus_follows_mouse no
 
 # ------------------------------------------------------------------------------
 # Bar
