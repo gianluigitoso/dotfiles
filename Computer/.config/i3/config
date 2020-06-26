@@ -2,6 +2,7 @@
 # Startup Commands
 # ------------------------------------------------------------------------------
 exec_always --no-startup-id compton --config "$HOME/.config/compton/compton.conf"
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 exec udiskie
 exec nm-applet
@@ -52,16 +53,16 @@ exec --no-startup-id betterlockscreen -w
 # Variables
 # ------------------------------------------------------------------------------
 set $mod Mod4
-set $ws1 "1:1 "
-set $ws2 "2:2 "
-set $ws3 "3:3 "
-set $ws4 "4:4 "
-set $ws5 "5:5 "
-set $ws6 "6:6 "
-set $ws7 "7:F1 "
-set $ws8 "8:F2 "
-set $ws9 "9:F3 "
-set $ws10 "10:F4 "
+set $ws1 "1:1: Web"
+set $ws2 "2:2: Code"
+set $ws3 "3:3: Shell"
+set $ws4 "4:4: Files"
+set $ws5 "5:5: Fun"
+set $ws6 "6:6: Monitor"
+set $ws7 "7:F1: Chat"
+set $ws8 "8:F2: VMs"
+set $ws9 "9:F3: Games"
+set $ws10 "10:F4: Music"
 set $refresh_i3status killall -SIGUSR1 i3status
 set $terminal i3-sensible-terminal
 
@@ -139,19 +140,18 @@ hide_edge_borders smart
 # ------------------------------------------------------------------------------
 # Bar
 # ------------------------------------------------------------------------------
-bar {
-	strip_workspace_numbers yes
-	position top
-        #status_command i3status
-        status_command exec $HOME/.config/tazeg-bar/mybar.sh
-        tray_padding 2
-        separator_symbol " | "
-        font pango: Hack 9
-	colors {
-		#background #2F343F
-		active_workspace #333333 #5f676a #ffffff
-	}
-}
+#bar {
+#	strip_workspace_numbers yes
+#	position bottom
+#       status_command i3status
+#        tray_padding 2
+#        separator_symbol " | "
+#        font pango: Hack 9
+#	colors {
+#		#background #2F343F
+#		active_workspace #333333 #5f676a #ffffff
+#	}
+#}
 
 
 # ------------------------------------------------------------------------------
