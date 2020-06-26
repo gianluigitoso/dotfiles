@@ -10,7 +10,7 @@ exec blueman-applet
 exec pasystray
 exec xss-lock -- betterlockscreen -l dimblur -t "You shall not pass..."
 #exec insync
-#exec flameshot
+exec flameshot
 #exec clipit
 
 set $TERMINAL alacritty
@@ -42,7 +42,7 @@ bindsym Print exec "scrot ~/Pictures/screenshots/scrot-%Y-%m-%d%H:%M:%S.png"
 new_window 1pixel
 gaps inner 7
 gaps outer 1
-smart_gaps on
+#smart_gaps on
 
 # ------------------------------------------------------------------------------
 # Wallpaper Config

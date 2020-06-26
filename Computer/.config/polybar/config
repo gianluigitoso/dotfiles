@@ -18,13 +18,13 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
+background = #000
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
+primary = #007dd7
+secondary = #00ff00
 alert = #bd2c40
 
 [bar/polybar-top]
@@ -60,14 +60,14 @@ font-5 = "Font Awesome 5 Brands:style=Regular:pixelsize=12;2"
 
 modules-left = i3
 modules-center = 
-modules-right = filesystem pulseaudio memory cpu wlan eth date 
+modules-right = filesystem memory cpu public-ip wlan eth date 
 
 tray-position = right
 tray-padding = 2
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
-wm-restack = i3
+;wm-restack = i3
 
 ;override-redirect = true
 
@@ -135,13 +135,13 @@ label-unfocused = %name% [ %icon% ]
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %name% [ %icon% ]
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent = %name% [ %icon% ]
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
@@ -266,6 +266,18 @@ ramp-0 = a
 ramp-1 = b
 ramp-2 = c
 ramp-foreground = ${colors.foreground-alt}
+
+[module/public-ip]
+; Script
+type = custom/script
+interval = 3600
+exec = curl 'https://api.ipify.org?format=json' 2>/dev/null | cut -d\" -f4
+
+; Format
+format-underline = #268bd2
+format-prefix = "PUBLIC "
+format-prefix-foreground = #5b
+
 
 [settings]
 screenchange-reload = true
