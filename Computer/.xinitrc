@@ -43,7 +43,13 @@ export EDITOR="$VISUAL"
 numlockx &
 
 # Set keyboard to PT-BR
-setxkbmap -layout "br"
+setxkbmap -layout "br" &
+
+# Policy kit
+lxpolkit &
+
+# Notification daemon
+systemctl --user start xfce4-notifyd
 
 # Start i3-wm
 exec i3
