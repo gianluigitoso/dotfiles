@@ -18,6 +18,8 @@ set $TERMINAL alacritty
 # ------------------------------------------------------------------------------
 # Custom Keys
 # ------------------------------------------------------------------------------
+bindsym $mod+q exec $terminal -e ranger
+
 # Media
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl play-pause
@@ -74,7 +76,6 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="blueman-manager"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [title="Encryptr"] floating enable
-
 
 # ------------------------------------------------------------------------------
 # Scratchpad config
