@@ -1,102 +1,158 @@
 # ------------------------------------------------------------------------------
 # Startup Commands
 # ------------------------------------------------------------------------------
-exec_always --no-startup-id compton -f --config /home/$USER/.config/compton.conf # Compositor
-exec udiskie # Automount
-exec keyboard-layout.sh # Keyboard layour changer (custom script)
-exec nm-applet # Applet: Network Manager
-exec blueman-applet # Applet: Bluetooth Manager
-exec cbatticon # Applet: Battery indicator
-exec caffine
+exec_always --no-startup-id compton --config "$HOME/.config/compton/compton.conf"
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+exec udiskie
+exec nm-applet
+exec blueman-applet
 exec pasystray
+exec xss-lock -- betterlockscreen -l dimblur -t "You shall not pass..."
+#exec insync
+exec flameshot
+#exec clipit
 
-exec setxkbmap -layout "us,br" -option "grp:alt_shift_toggle"
-
+set $TERMINAL alacritty
 
 # ------------------------------------------------------------------------------
-# Custom shortcuts
+# Custom Keys
 # ------------------------------------------------------------------------------
+bindsym $mod+q exec $terminal -e ranger
+
 # Media
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Volume
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% # raise volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% # lower volume
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle # toggle mute for default device
 
-# Brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+# Actions
+bindsym $mod+x kill
+bindsym $mod+Control+l exec betterlockscreen -l dimblur -t "You shall not pass..."
+
+# Screenshots
+bindsym Print exec "scrot ~/Pictures/screenshots/scrot-%Y-%m-%d%H:%M:%S.png"
 
 # ------------------------------------------------------------------------------
 # Gaps Config
 # ------------------------------------------------------------------------------
 new_window 1pixel
-gaps inner 6
+gaps inner 7
 gaps outer 1
 #smart_gaps on
 
 # ------------------------------------------------------------------------------
 # Wallpaper Config
 # ------------------------------------------------------------------------------
-#exec --no-startup-id source ~/.fehbg
-exec --no-startup-id betterlockscreen -w dim
+exec --no-startup-id betterlockscreen -w
 
 # ------------------------------------------------------------------------------
 # Variables
 # ------------------------------------------------------------------------------
 set $mod Mod4
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 "1:1: Web"
+set $ws2 "2:2: Code"
+set $ws3 "3:3: Shell"
+set $ws4 "4:4: Files"
+set $ws5 "5:5: Fun"
+set $ws6 "6:6: Monitor"
+set $ws7 "7:F1: Chat"
+set $ws8 "8:F2: VMs"
+set $ws9 "9:F3: Games"
+set $ws10 "10:F4: Music"
 set $refresh_i3status killall -SIGUSR1 i3status
-set $terminal termite 
-# set $terminal i3_sensible_terminal
-
+set $terminal i3-sensible-terminal
 
 # ------------------------------------------------------------------------------
 # Floating Windows
 # ------------------------------------------------------------------------------
-for_window [class="stacer"] floating enable
 for_window [class="pavucontrol"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="blueman-manager"] floating enable
 for_window [class="Blueman-manager"] floating enable
-#for_window [class="thunar"] floating enable
-#for_window [class="Thunar"] floating enable
+for_window [title="Encryptr"] floating enable
+
+# ------------------------------------------------------------------------------
+# Scratchpad config
+# ------------------------------------------------------------------------------
+
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window
+bindsym $mod+minus scratchpad show
+
+# ------------------------------------------------------------------------------
+# Workspace App Assignment
+# ------------------------------------------------------------------------------
+#assign [class="firefox"] $ws1
+#assign [class="Firefox"] $ws1
+
+#assign [class="code"] $ws2
+#assign [class="Code"] $ws2
+
+#assign [class="Mail"] $ws4
+#assign [class="Thunderbird"] $ws4
+
+#assign [title="gotop"] $ws6
+#assign [title="Gotop"] $ws6
+
+
+#assign [class="discord"] $ws7
+#assign [class="Discord"] $ws7
+#assign [class="hexchat"] $ws7
+#assign [class="Hexchat"] $ws7
+#assign [class="telegram-desktop"] $ws7
+#assign [class="TelegramDesktop"] $ws7
+#assign [class="whatsapp-nativefier-d40211"] $ws7
+#assign [class="slack"] $ws7
+#assign [class="Slack"] $ws7
+
+#assign [class="virtualbox"] $ws8
+#assign [class="Virtualbox"] $ws8
+
+#assign [class="steam"] $ws9
+#assign [class="Steam"] $ws9
+
+#assign [class="spotify"] $ws10
+#assign [class="Spotify"] $ws10
+#assign [title="Spotify Premium"] $ws10
 
 # ------------------------------------------------------------------------------
 # Theme
 # ------------------------------------------------------------------------------
-font pango:Deja Vu Sans Mono 9
+font pango:monospace 8
 
 # ------------------------------------------------------------------------------
-# Custom Key Bindings
+# Behavior
 # ------------------------------------------------------------------------------
-bindsym $mod+x kill
-bindsym $mod+Control+l exec betterlockscreen -l dimblur -t "You shall not pass"
+#workspace_auto_back_and_forth yes
+focus_follows_mouse yes
 
+default_border pixel 4
+default_floating_border pixel 4
+hide_edge_borders smart
 
 # ------------------------------------------------------------------------------
 # Bar
 # ------------------------------------------------------------------------------
-bar {
-	position top
-        status_command i3status
-        tray_padding 2
-        separator_symbol " | "
-        font pango:DejaVu Sans 9
-}
+#bar {
+#	strip_workspace_numbers yes
+#	position bottom
+#       status_command i3status
+#        tray_padding 2
+#        separator_symbol " | "
+#        font pango: Hack 9
+#	colors {
+#		#background #2F343F
+#		active_workspace #333333 #5f676a #ffffff
+#	}
+#}
 
 
 # ------------------------------------------------------------------------------
@@ -114,10 +170,10 @@ bindsym $mod+d exec dmenu_run
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+j focus down 
+bindsym $mod+k focus up 
+bindsym $mod+l focus right
+bindsym $mod+h focus left 
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -126,10 +182,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -138,7 +194,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+b split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -173,10 +229,10 @@ bindsym $mod+3 workspace number $ws3
 bindsym $mod+4 workspace number $ws4
 bindsym $mod+5 workspace number $ws5
 bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+bindsym $mod+F1 workspace number $ws7
+bindsym $mod+F2 workspace number $ws8
+bindsym $mod+F3 workspace number $ws9
+bindsym $mod+F4 workspace number $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -185,12 +241,12 @@ bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
 bindsym $mod+Shift+5 move container to workspace number $ws5
 bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+F1 move container to workspace number $ws7
+bindsym $mod+Shift+F2 move container to workspace number $ws8
+bindsym $mod+Shift+F3 move container to workspace number $ws9
+bindsym $mod+Shift+F4 move container to workspace number $ws10
 
-# reload the configuration file
+
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
@@ -205,10 +261,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
         bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
