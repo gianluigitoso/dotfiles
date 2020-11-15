@@ -90,6 +90,10 @@ for_window [class="Pavucontrol"] floating enable
 for_window [class="blueman-manager"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [title="Encryptr"] floating enable
+for_window [class="speedcrunch"] floating enable
+for_window [class="SpeedCrunch"] floating enable
+for_window [class="telegram-desktop"] floating enable
+for_window [class="TelegramDesktop"] floating enable
 
 # ------------------------------------------------------------------------------
 # Scratchpad config
