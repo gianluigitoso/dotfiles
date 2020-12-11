@@ -63,7 +63,7 @@ gaps outer 1
 # ------------------------------------------------------------------------------
 # Wallpaper Config
 # ------------------------------------------------------------------------------
-#exec --no-startup-id betterlockscreen -w
+exec --no-startup-id betterlockscreen -w
 
 # ------------------------------------------------------------------------------
 # Variables
@@ -94,6 +94,8 @@ for_window [class="speedcrunch"] floating enable
 for_window [class="SpeedCrunch"] floating enable
 for_window [class="telegram-desktop"] floating enable
 for_window [class="TelegramDesktop"] floating enable
+# Matlab Figures
+for_window [title="Figure *"] floating enable
 
 # ------------------------------------------------------------------------------
 # Scratchpad config
